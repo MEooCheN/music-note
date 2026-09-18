@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>页面不存在</title>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+
+<!--
+  静态托管的 404 页面。两件事：
+
+  1. 本站是 hash 路由的单页应用（单元地址形如 /#/u/B1），真实的
+     /u/B1、/t/b 在服务器上并不存在，所以**刷新和分享都会落到这里**。
+     下面的脚本把用户送回首页。
+
+  2. 顺带把老式深链接还原：/u/B1 → /#/u/B1，/t/b → /#/t/b。
+
+  这里**刻意不用绝对路径**（不用 /assets/...、不用 href="/"）：
+  项目站部署在 https://用户名.github.io/仓库名/ 这种子目录下时，
+  开头的 / 会指到域名根，样式和跳转都会失败。
+  下面的脚本从自己的 src 反推基准路径，所以放域名根或任意子目录都能用。
+
+  更推荐配真正的 rewrite 规则（见 README「上传公网」），
+  那样连 404 都不会闪一下；这个文件是各平台通用的兜底。
+-->
+
+<div style="max-width:640px;margin:56px auto;padding:0 20px">
+  <h1 style="font-size:22px">这个地址没有对应页面</h1>
+  <p class="sub" id="why">正在把你送回首页……</p>
+  <p><a id="home" href="./">← 回到首页</a></p>
+</div>
+
+<script src="site.config.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* 目标写成相对地址（'./' 或 '#/u/B1'），由浏览器按当前地址解析。
+     这样做的好处：不用手算部署在域名根还是子目录 —— 相对片段解析出来的
+     地址会保留原来的 pathname，只换 hash。例如
+       域名根  https://x.com/u/B1            → https://x.com/u/B1#/u/B1
+       子目录  https://u.github.io/repo/u/B1 → https://u.github.io/repo/u/B1#/u/B1
+     两种情况都对。路由只看 hash，pathname 多余一点没有影响。 */
+
+  var path = location.pathname.replace(/\/+$/, '');
+
+  /* 算出基准前缀，好把 /repo/u/B1 里的 /repo 摘掉 */
+  var self = document.currentScript && document.currentScript.src;
+  var prefix = '';
+  if (self) {
+    var i = self.indexOf('/site.config.js');
+    if (i >= 0) prefix = self.slice(0, i + 1).replace(/^https?:\/\/[^/]+/, '');
+  }
+  prefix = '/' + prefix.replace(/^\/+|\/+$/g, '');   /* '' → '/' ；'repo' → '/repo' */
+
+  var rest = path;
+  if (prefix !== '/' && rest.indexOf(prefix) === 0) rest = rest.slice(prefix.length);
+  rest = rest.replace(/^\/+/, '');
+
+  var m = /^(u|t)\/(.+)$/.exec(rest);
+  var why = document.getElementById('why');
+  if (why) {
+    why.textContent = m ? '这个地址指向站内单元，正在转到它……' : '正在把你送回首页……';
+  }
+  location.replace(m ? '#/' + m[1] + '/' + m[2] : './');
+})();
+</script>
+
+<noscript>
+  <p>这个站点需要 JavaScript，且上面那个地址不是有效页面。
+     <a href="./">回到首页</a>。</p>
+</noscript>
+
+</body>
+</html>

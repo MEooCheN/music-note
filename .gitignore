@@ -1,0 +1,28 @@
+# 临时与检查用的目录（生成脚本、探针脚本的工作区，不进仓库）
+.probe/
+.check/
+.verify/
+.final/
+.design/
+.audit/
+.img/
+.cfg.bak
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+*.swp
+*~
+
+# Node（本项目没有依赖，但万一有人跑 npm 会生成）
+node_modules/
+package-lock.json
+
+# ★ 以下文件由 tools/apply-site-config.js 生成，但**必须提交**，不要忽略它们：
+#     robots.txt / sitemap.xml / site.webmanifest
+#   纯静态托管不跑构建步骤，这些文件必须已经在仓库里，否则线上就是缺的。
+#
+# ★ assets/scores/scores.js 曾经是自动生成的内联谱面打包（981 KB），已按架构决定删除。
+#   若它重新出现，tools/check-content.js 与 tools/check-musicxml.js 会直接报错。

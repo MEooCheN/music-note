@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>关于本站 · 数据来源与授权 · 免责声明</title>
+<meta name="description" content="本站是什么、可信到什么程度、内容与谱例从哪来、按什么授权、已知的限制与错误风险。">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%23a3401f'/%3E%3Ctext%20x='16'%20y='23'%20font-size='20'%20text-anchor='middle'%20fill='%23faf8f4'%3E%E2%99%AB%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  .doc { max-width: 720px; margin: 0 auto; padding: 34px 20px 80px; }
+  .doc h1 { font-size: 24px; margin-top: 0; }
+  .doc h2 { font-size: 17px; margin-top: 34px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .doc h3 { font-size: 15px; margin-top: 22px; }
+  .doc p, .doc li { font-size: 14.5px; }
+  .doc code { font-family: var(--mono); font-size: 13px; background: var(--panel-2);
+    padding: 1px 5px; border-radius: 4px; }
+  .doc table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 14px; }
+  .doc th, .doc td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .doc th { color: var(--ink-2); font-weight: 600; }
+  .back { display: inline-block; margin-bottom: 6px; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<div class="doc">
+  <a class="back" href="../">← 回到首页</a>
+
+  <h1>关于本站</h1>
+
+  <div class="note">
+    <b>这是一份个人学习笔记，不是教程。</b>
+    <p class="sub" style="margin:6px 0 0">
+      作者在学这些东西，边学边记。所以站内文字有草稿性质，<b>不保证正确</b>。
+      请以原教材、原谱和原始数据集为准。</p>
+  </div>
+
+  <h2>一、内容可信到什么程度</h2>
+
+  <p>站内内容分三档，可靠性差别很大，混在一起看会出事，所以分开列：</p>
+
+  <table>
+    <tr><th>类别</th><th>可靠性</th></tr>
+    <tr>
+      <td>对位硬规则判定</td>
+      <td><b>机器可验。</b>21 条规则逐条可查、可改、可关。
+          在项目里跑 <code>node tools\verify.js</code> 与
+          <code>node tools\check-rules.js</code>，结果就是结论。</td>
+    </tr>
+    <tr>
+      <td>DCML 和声标签语法</td>
+      <td><b>官方正则。</b>取自 DCMLab/standards v2.3.0，是原样使用，不是近似实现。</td>
+    </tr>
+    <tr>
+      <td>讲解文字、文献分析结论</td>
+      <td><b>草稿。</b>可能有错，包括事实性错误。这一档占页面的绝大多数。</td>
+    </tr>
+  </table>
+
+  <h3>还有三条边界必须说清</h3>
+  <ul>
+    <li><b>规则合规 ≠ 音乐好听。</b>检查器是筛子，不是裁判。真实文献是范本，耳朵是最终裁判。</li>
+    <li><b>规则集来自通行教学共识，不是逐字引用某本教材。</b>
+        不同教材在细节上（尤其反向五八度、连续三六度的上限）并不一致，
+        所以规则做成了可切换的。</li>
+    <li><b>风格归属不保证。</b>16 世纪实际写法与教科书规范有出入——检查器实现的是教科书规范。</li>
+  </ul>
+
+  <h2>二、内容与谱例从哪来</h2>
+
+  <p>站内的谱面<strong>一律用 Fux 本人的对位练习</strong>，不用程序生成的，也不用作者手写的。</p>
+
+  <ul>
+    <li>谱例来源：<a href="https://github.com/MarkGotham/species" target="_blank" rel="noopener">github.com/MarkGotham/species</a>
+        ——Fux《Gradus ad Parnassum》全部对位练习连同 Fux 本人的解答。</li>
+    <li>每条进站的谱例都过两道关：固定旋律与 Fux 为该调式规定的旋律逐音吻合，
+        且 Fux 的解答喂进本站检查器必须 0 错误。</li>
+    <li>这个流程抓出过检查器自身的若干错误。相关记录在仓库的
+        <code>docs/检查器交接文档.md</code> 里。</li>
+  </ul>
+
+  <p>谱面与音频由 MuseScore Studio 导出；网站本身不渲染乐谱，只显示导出的结果。</p>
+
+  <h2>三、授权</h2>
+
+  <p>本站作者原创的部分（网页代码、写作文字、检查器实现）按 <b>MIT</b> 授权。
+     第三方内容各自遵从原来的授权：</p>
+
+  <table>
+    <tr><th>内容</th><th>来源</th><th>授权</th></tr>
+    <tr><td>Fux 对位练习语料与由它导出的谱面/音频</td>
+        <td>MarkGotham/species</td><td><b>CC0 1.0</b>（公有领域）</td></tr>
+    <tr><td>DCML 标注正则</td><td>DCMLab/standards v2.3.0</td><td>CC BY-SA 4.0</td></tr>
+    <tr><td>外部链接指向的内容</td><td>IMSLP、DCMLab、GitHub 等</td><td>归各自权利人所有（本站只做链接）</td></tr>
+  </table>
+
+  <p>完整授权文本见仓库根目录的 <code>LICENSE</code>。</p>
+
+  <h2>四、免责声明</h2>
+
+  <p>本站按「现状」提供，<b>不附带任何形式的保证</b>，包括对适销性、特定用途适用性
+     和不侵权的默示保证。因使用本站内容而产生的任何后果，作者不承担责任。</p>
+
+  <p>如果你要用这里的东西备考、教学或发表，<b>请先回到原教材和原谱核对</b>。
+     发现错误欢迎指出。</p>
+
+  <h2>五、已知限制</h2>
+
+  <ul>
+    <li><b>谱面与音频需要在 http 下打开。</b>浏览器不允许 <code>file://</code> 页面读取
+        同目录的 SVG，所以在本地双击 <code>index.html</code> 时谱面区会显示一句说明。
+        在项目目录里跑一条静态服务即可（<code>python -m http.server 8000</code>）。</li>
+    <li><b>真实文献的谱面要自己准备。</b>站内只给权威谱面的链接，不转载谱面本身。</li>
+    <li><b>DCML 官方工具链未使用。</b>官方的 <code>ms3</code> 解析工具需要 Python 包，
+        本站的标签检查器改走 MusicXML + 标准库解析这条路。</li>
+    <li><b>三声部对位只查一部分。</b>目前只查三对声部之间的平行五/八度与声部交错；
+        音型层面（经过音／辅助音／cambiata／挂留／终止式）尚未实现。</li>
+    <li><b>有一条规则没有反例。</b>检查器的 H04（反向到达五度/八度）目前构造不出能单独
+        证明它的例子，所以它是<em>未经检验</em>的，不是"检验通过"。</li>
+    <li><b>进度存在你自己的浏览器里</b>（localStorage），不上传、不跨设备同步。
+        清除浏览器数据会一并清掉。</li>
+  </ul>
+
+  <h2>六、技术上的诚实交代</h2>
+
+  <p>本站没有服务器、没有数据库、没有第三方依赖，全部是静态文件。
+     对位练习的批改是在你的浏览器里当场跑规则检查器完成的，
+     所以它和仓库里的规则集永远一致——改规则，练习的判定自动跟着变。</p>
+
+  <p>这个仓库自带一整套检查闸门（内容标准、规则覆盖、页面加载顺序、音画对齐等），
+     每次改动都会跑一遍。<b>但它们只能保证"没有已知的错"，不能保证内容是对的。</b></p>
+
+  <p style="margin-top:34px"><a href="../">← 回到首页</a></p>
+</div>
+
+<!-- 站点名与标语来自 site.config.js，改配置这里就跟着变，不必改这个文件 -->
+<script src="../site.config.js"></script>
+<script>
+(function () {
+  var c = window.SITE_CONFIG || {};
+  if (c.name) {
+    document.title = '关于本站 · ' + c.name;
+    var h = document.querySelector('.doc h1');
+    if (h) h.textContent = '关于本站';
+    var foot = document.getElementById('sitefoot');
+    if (foot) foot.textContent = c.name + (c.tagline ? ' — ' + c.tagline : '');
+  }
+})();
+</script>
+
+</body>
+</html>

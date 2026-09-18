@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>复调 · 曲式 · 标注 — 个人音乐理论学习笔记</title>
+
+<!-- 对外可见的自我介绍。措辞刻意保守：这是个人笔记，不是教程。
+     这几行必须和 site.config.js 保持一致 —— tools/check-site-config.js 会核对。
+     运行时 scoremeta.js 会用配置覆盖它们。 -->
+<meta name="description" content="个人音乐理论学习笔记：严格对位（文艺复兴五种对位）、曲式与功能分析（Caplin）、音乐信息标注（DCML）。含 Fux《Gradus ad Parnassum》公有领域谱例与一个可运行的对位规则检查器。内容为个人草稿，不保证无错。">
+<meta name="author" content="个人学习笔记">
+<meta name="robots" content="index, follow">
+
+<!-- 分享卡片。og:image 需要绝对地址，由 scoremeta.js 按 site.config.js 的
+     shareImage 生成；现在还没做那张图，所以分享出去只有纯文字卡片。 -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="复调 · 曲式 · 标注">
+<meta property="og:title" content="复调 · 曲式 · 标注 — 个人音乐理论学习笔记">
+<meta property="og:description" content="个人音乐理论学习笔记：严格对位（文艺复兴五种对位）、曲式与功能分析（Caplin）、音乐信息标注（DCML）。含 Fux《Gradus ad Parnassum》公有领域谱例与一个可运行的对位规则检查器。内容为个人草稿，不保证无错。">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="复调 · 曲式 · 标注 — 个人音乐理论学习笔记">
+<meta name="twitter:description" content="个人音乐理论学习笔记：严格对位（文艺复兴五种对位）、曲式与功能分析（Caplin）、音乐信息标注（DCML）。含 Fux《Gradus ad Parnassum》公有领域谱例与一个可运行的对位规则检查器。内容为个人草稿，不保证无错。">
+
+<!-- canonical / og:image / og:url 由 assets/js/scoremeta.js 在运行时按
+     site.config.js 写入 —— 它们需要绝对地址，写死会随域名变更而漂移。 -->
+
+<link rel="webmanifest" href="site.webmanifest">
+
+<!-- 图标内联成 data URI：不额外发请求，且换主题时的底色固定，不需要单独的 .ico -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%23a3401f'/%3E%3Ctext%20x='16'%20y='23'%20font-size='20'%20text-anchor='middle'%20fill='%23faf8f4'%3E%E2%99%AB%3C/text%3E%3C/svg%3E">
+<!-- 深色模式下的地址栏配色。theme-color 会由 scoremeta.js 按主题同步更新。 -->
+<meta name="theme-color" content="#faf8f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17181a" media="(prefers-color-scheme: dark)">
+
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="brand" id="brand">
+    <span class="mark">♫</span>
+    <span class="name">复调 · 曲式 · 标注</span>
+  </div>
+  <nav class="topnav" id="tracknav"></nav>
+  <div class="topright">
+    <span class="progress-chip" id="progressChip" title="已完成单元 / 总单元"></span>
+    <button class="iconbtn" id="themeBtn" title="切换明暗">◐</button>
+  </div>
+</header>
+
+<main id="view" class="view"><!-- 由 app.js 渲染 --></main>
+
+<noscript>
+  <div style="max-width:640px;margin:40px auto;padding:0 20px;font:15px/1.7 'Segoe UI','Microsoft YaHei',system-ui,sans-serif;color:#1c1b19">
+    <h1 style="font-size:20px">这个站点需要 JavaScript</h1>
+    <p>整站内容是由脚本渲染的，禁用 JavaScript 之后这里只剩一片空白，很抱歉。
+       下面是它讲了什么，你可以先看看要不要开着 JS 再回来：</p>
+    <ul>
+      <li><b>严格对位</b>——文艺复兴五种对位。含 Fux《Gradus ad Parnassum》的公有领域谱例，
+          以及一个可运行的规则检查器（21 条规则），用来批改自己写的对位。</li>
+      <li><b>曲式与功能分析</b>——以 Caplin 功能理论为核心。</li>
+      <li><b>音乐信息标注</b>——DCML 和声标注标准，标签按官方正则校验。</li>
+    </ul>
+    <p>另外提醒：<b>这是个人学习笔记，不是教程</b>，讲解文字属草稿、可能有错，
+       请以原教材和原谱为准。详见
+      <a href="docs/关于本站.html" style="color:#a3401f">关于本站</a>。</p>
+    <p style="color:#55524c;font-size:13px">谱面与声音来自 MuseScore；
+       对位练习的批改由规则检查器当场完成，不依赖服务器。</p>
+  </div>
+</noscript>
+
+<footer class="foot">
+  <span id="footNote">谱面与声音来自 MuseScore；练习批改由规则检查器完成。</span>
+  <span class="footlinks" id="footLinks"></span>
+</footer>
+
+<!-- ── 内容与引擎 ─────────────────────────────────────────────────────
+     要新增一个学习单元：在 content/units/ 里放一个 .js 文件，
+     然后在下面这一行按顺序加上 <script src="content/units/你的文件.js"></script>
+     详细步骤见 README-使用说明.md
+     ──────────────────────────────────────────────────────────────── -->
+<!-- ── 站点身份配置（改这个文件就够了，见 site.config.js）─────────────
+     必须在 core.js 之前：scoremeta.js 会把配置应用成 head 里的标签。 -->
+<script src="site.config.js"></script>
+<script src="assets/js/scoremeta.js"></script>
+<script src="theory/core.js"></script>
+<script src="theory/counterpoint.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/drills.js"></script>
+<script src="assets/js/viz.js"></script>
+<!-- 谱面（SVG）由 assets/scores/*.svg 按需读取。
+     曾经这里有一个 assets/scores/scores.js，把 9 个 SVG 内联成 981 KB 的 JS，
+     目的是让 file:// 双击也能显示（file:// 下 XHR 被 CORS 拦）。
+     代价是每次打开都要下载近 1 MB，而 http(s) 下 XHR 本来是通的 —— 所以已删除。
+     现在双击打开时谱面区会显示一句说明（音频与谱面需要 http 才能加载）。 -->
+<script src="content/units/a-harmony.js"></script>
+<script src="content/units/b-counterpoint.js"></script>
+<script src="content/units/b-counterpoint-2.js"></script>
+<script src="content/units/b-counterpoint-3.js"></script>
+<script src="content/units/c-form.js"></script>
+<script src="content/units/c-form-2.js"></script>
+<script src="content/units/e-annotation.js"></script>
+<script src="content/units/e-annotation-2.js"></script>
+<script src="assets/js/app.js"></script>
+
+</body>
+</html>
