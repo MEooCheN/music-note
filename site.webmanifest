@@ -1,0 +1,11 @@
+{
+  "name": "复调 · 曲式 · 标注",
+  "short_name": "复调 · 曲式 · 标注",
+  "description": "个人音乐理论学习笔记：严格对位（文艺复兴五种对位）、曲式与功能分析（Caplin）、音乐信息标注（DCML）。含 Fux《Gradus ad Parnassum》公有领域谱例与一个可运行的对位规则检查器。内容为个人草稿，不保证无错。",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#faf8f4",
+  "theme_color": "#a3401f"
+}

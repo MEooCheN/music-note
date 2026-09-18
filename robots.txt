@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# 站内是 hash 路由（/#/u/B1），单元没有独立 URL，所以 sitemap 只有首页
+Sitemap: https://meoochen.github.io/music-note/sitemap.xml

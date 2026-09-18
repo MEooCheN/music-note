@@ -28,7 +28,7 @@
      *
      * 注意：末尾不要加斜杠。子目录部署（项目站）把路径直接写上即可，
      * 下面 site.basePath 会自动从它推导出来。 */
-    siteUrl: '',
+    siteUrl: 'https://meoochen.github.io/music-note',
 
     /* 部署在域名的子目录下时才需要手填；留空则从 siteUrl 的路径部分自动推导。
      * 例：'/my-notes'  （不要末尾斜杠） */
